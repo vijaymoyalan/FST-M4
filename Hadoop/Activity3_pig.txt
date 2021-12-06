@@ -1,0 +1,50 @@
+root@6198780e24a9:/# vim sales.csv
+root@6198780e24a9:/# hdfs dfs -put ./sales.csv /user/root/
+root@6198780e24a9:/# vim salesCSV.pig
+root@6198780e24a9:/# vim salesCSV.pig
+root@6198780e24a9:/# vim salesCSV.pig
+root@6198780e24a9:/# pig salesCSV.pig
+2021-12-01 16:40:12,364 INFO pig.ExecTypeProvider: Trying ExecType : LOCAL
+2021-12-01 16:40:12,367 INFO pig.ExecTypeProvider: Trying ExecType : MAPREDUCE
+2021-12-01 16:40:12,367 INFO pig.ExecTypeProvider: Picked MAPREDUCE as the ExecType
+2021-12-01 16:40:12,515 [main] INFO  org.apache.pig.Main - Apache Pig version 0.17.0 (r1797386) compiled Jun 02 2017, 15:41:58
+2021-12-01 16:40:12,515 [main] INFO  org.apache.pig.Main - Logging error message
+
+2021-12-01 16:42:55,645 [main] INFO  org.apache.pig.tools.pigstats.mapreduce.SimplePigStats - Script Statistics:
+
+HadoopVersion   PigVersion      UserId  StartedAt       FinishedAt      Features
+3.3.1   0.17.0  root    2021-12-01 16:40:17     2021-12-01 16:42:55     GROUP_BY
+
+Success!
+
+Job Stats (time in seconds):
+JobId   Maps    Reduces MaxMapTime      MinMapTime      AvgMapTime      MedianMapTime   MaxReduceTime   MinReduceTime  AvgReduceTime                                                                                                                MedianReducetime Alias   Feature Outputs
+job_1638376442683_0001  1       1       n/a     n/a     n/a     n/a     n/a     n/a     n/a     n/a     CountByCountry,GroupByCountry,salesTable                                                                                                    GROUP_BY,COMBINER        hdfs://6198780e24a9:9000/user/root/salesOutput,
+
+Input(s):
+Successfully read 0 records from: "hdfs:///user/root/sales.csv"
+
+Output(s):
+Successfully stored 0 records in: "hdfs://6198780e24a9:9000/user/root/salesOutput"
+
+Counters:
+Total records written : 0
+Total bytes written : 0
+Spillable Memory Manager spill count : 0
+Total bags proactively spilled: 0
+Total records proactively spilled: 0
+
+Job DAG:
+job_1638376442683_0001
+
+
+
+root@6198780e24a9:/# hdfs dfs -cat /user/root/salesOutput/part-r-00000
+France:1
+Israel:1
+Country:1
+Australia:1
+Netherlands:1
+United States:9
+United Kingdom:1
+root@6198780e24a9:/#

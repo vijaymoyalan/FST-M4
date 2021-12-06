@@ -1,0 +1,26 @@
+root@3e1e45b1111c:/# vim file01.txt
+root@3e1e45b1111c:/# hdfs dfs -put ./file01.txt /user/root
+root@3e1e45b1111c:/# vim wordcount.pig
+root@3e1e45b1111c:/# pig wordcount.pig
+2021-12-01 05:05:34,770 INFO pig.ExecTypeProvider: Trying ExecType : LOCAL
+2021-12-01 05:05:34,774 INFO pig.ExecTypeProvider: Trying ExecType : MAPREDUCE
+2021-12-01 05:05:34,774 INFO pig.ExecTypeProvider: Picked MAPREDUCE as the ExecType
+2021-12-01 05:05:34,942 [main] INFO  org.apache.pig.Main - Apache Pig version 0.17.0 (r1797386
+2021-12-01 05:09:02,573 [main] INFO  org.apache.pig.backend.hadoop.executionengine.mapReduceLayer.MapReduceLauncher - 100% complete
+2021-12-01 05:09:02,619 [main] INFO  org.apache.pig.tools.pigstats.mapreduce.SimplePigStats - Script Statistics:
+
+HadoopVersion   PigVersion      UserId  StartedAt       FinishedAt      Features
+3.3.1   0.17.0  root    2021-12-01 05:05:45     2021-12-01 05:09:02     GROUP_BY
+
+Success!
+
+Job Stats (time in seconds):
+JobId   Maps    Reduces MaxMapTime      MinMapTime      AvgMapTime      MedianMapTime   MaxReduceTime   MinReduceTime  AvgReduceTime                                                                                                                     MedianReducetime Alias   Feature Outputs
+job_1638327648335_0001  1       1       n/a     n/a     n/a     n/a     n/a     n/a     n/a     n/a     cntd,grpd,inputFile,words                                                                                                                        GROUP_BY,COMBINER        hdfs:///user/root/results,
+
+
+root@3e1e45b1111c:/# hdfs dfs -cat /user/root/results/part-r-00000
+Bye     1
+World   2
+        0
+root@3e1e45b1111c:/#

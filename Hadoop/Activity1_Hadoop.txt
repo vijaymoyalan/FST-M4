@@ -1,0 +1,15 @@
+root@3e1e45b1111c:/# vim txtFile.txt
+root@3e1e45b1111c:/# vim csvFile.csv
+root@3e1e45b1111c:/# hdfs dfs -mkdir /user/root/textData
+root@3e1e45b1111c:/# hdfs dfs -put ./csvFile.csv /user/root/textData
+root@3e1e45b1111c:/# hdfs dfs -put ./textFile.txt /user/root/textData
+put: `./textFile.txt': No such file or directory
+root@3e1e45b1111c:/# hdfs dfs -put ./txtFile.txt /user/root/textData
+
+root@3e1e45b1111c:/# hdfs dfs -stat "type:%F permissions:%a %u:%g size:%b name:%n" /user/root/textData/csvFile.csv
+type:regular file permissions:644 root:supergroup size:526 name:csvFile.csv
+
+root@3e1e45b1111c:/# hdfs dfs -stat "type:%F permissions:%a %u:%g size:%b name:%n" /user/root/textData/txtFile.txt
+type:regular file permissions:644 root:supergroup size:155 name:txtFile.txt
+
+root@3e1e45b1111c:/#
